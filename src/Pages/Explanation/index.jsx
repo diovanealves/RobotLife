@@ -1,10 +1,14 @@
-import { Text, View } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
+import { Text, View, ScrollView } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
 import DefaultButton from "../../Components/Common/DefaultButton";
+import ExplanationCard from "../../Components/Explanation/ExplanationCard";
 
 export default function Explanation() {
-  const handleSetShowHome = () => {
-    console.log("show home");
+  const navigation = useNavigation();
+
+  const handleNavHome = () => {
+    navigation.navigate("Home");
   };
 
   return (
@@ -14,6 +18,9 @@ export default function Explanation() {
           <Text className="text-3xl font-bold text-[#ffffff] text-center my-10">
             Antes, deixa {"\n"} eu te explicar....
           </Text>
+
+          <ExplanationCard />
+
           <Text className="text-lg font-bold text-[#ffffff] mt-5 mb-2">
             Pronto(a) para subir de nível na vida?
           </Text>
@@ -21,10 +28,9 @@ export default function Explanation() {
             Na próxima tela você vai poder escolher {"\n"} seus 4 hábitos de
             forma individual.
           </Text>
-
           <DefaultButton
             buttonText={"Continuar"}
-            handlePress={handleSetShowHome}
+            handlePress={handleNavHome}
             width={250}
             height={50}
           />
