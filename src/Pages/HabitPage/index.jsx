@@ -10,8 +10,11 @@ import {
   StyleSheet,
 } from "react-native";
 
+import SelectHabit from "../../Components/HabitPage/SelectHabit";
+
 export default function HabitPage({ route }) {
   const navigation = useNavigation();
+  const [habitInput, setHabitInput] = useState();
   const { create, habit } = route.params;
 
   return (
@@ -37,6 +40,10 @@ export default function HabitPage({ route }) {
             <View className="border border-[#FFFFFF] rounded-xl py-4 px-5">
               <Text className="text-[#BBBBBB] text-sm">{habit?.habitArea}</Text>
             </View>
+            <Text className="text-[#FFFFFF] text-base mt-9 mb-3 ml-2">
+              Hábito
+            </Text>
+            <SelectHabit habit={habit} habitInput={setHabitInput}></SelectHabit>
           </View>
         </View>
       </ScrollView>
