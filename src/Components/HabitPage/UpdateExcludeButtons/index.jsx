@@ -1,5 +1,13 @@
-import { Alert, Image, Text, TouchableOpacity, View } from "react-native";
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 import { useNavigation } from "@react-navigation/native";
+import HabitService from "../../../Services/HabitService";
 
 export default function UpdateExcludeButtons({
   habitInput,
@@ -9,7 +17,12 @@ export default function UpdateExcludeButtons({
   const navigation = useNavigation();
 
   function handleDeleteHabit() {
-    navigation.navigate("Home", { excludeArea: `${habitArea}` });
+    HabitService.deleteByName(habitArea)
+      .then(() => {
+        Alert.alert("Exclusão feita com sucesso.");
+        navigation.navigate("Home", { excludeArea: `${habitArea}` });
+      })
+      .catch((error) => console.log(error));
   }
 
   return (
@@ -59,9 +72,16 @@ export default function UpdateExcludeButtons({
       >
         <Image
           source={require("../../../assets/icons/trash.png")}
-          className="w-7"
+          style={styles.trash}
         />
       </TouchableOpacity>
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  trash: {
+    width: 28,
+    height: 28,
+  },
+});

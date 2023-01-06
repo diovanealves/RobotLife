@@ -15,8 +15,8 @@ export default function HomePage() {
         }}
       >
         <Stack.Screen name="Home" component={Home} />
-        <Stack.Screen name="Home" component={HabitPage} />
-        <Stack.Screen name="HabitPage" component={Explanation} />
+        <Stack.Screen name="HabitPage" component={HabitPage} />
+        <Stack.Screen name="Explanation" component={Explanation} />
       </Stack.Navigator>
     </NavigationContainer>
   );
