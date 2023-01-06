@@ -6,8 +6,9 @@ import LifeStatus from "../../Components/Common/LifeStatus";
 import StatusBar from "../../Components/Home/StatusBar";
 import CreateHabit from "../../Components/Home/CreateHabit";
 import EditHabit from "../../Components/Home/EditHabit";
+import ChangeNavigationService from "../../Services/ChangeNavigationService";
 
-export default function Home() {
+export default function Home({ route }) {
   const navigation = useNavigation();
 
   const [mindHabit, setMindHabit] = useState();
@@ -15,16 +16,30 @@ export default function Home() {
   const [bodyHabit, setBodyHabit] = useState();
   const [funHabit, setFunHabit] = useState();
 
+  const [robotDayLife, setRobotDayLife] = useState();
+  const today = new Date();
+
   function handleNavExplanation() {
     navigation.navigate("Explanation");
   }
+  useEffect(() => {
+    ChangeNavigationService.checkShowHome(1)
+      .then((showHome) => {
+        const formDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+        const checkDays =
+          new Date(formDate) - new Date(showHome.appStartData) + 1;
+        setRobotDaysLife(checkDays.toString().padStart(2, "0"));
+      })
+      .catch((err) => console.log(err));
+  }, [route.params]);
 
   return (
     <View className="h-full bg-[#212121]">
       <ScrollView>
         <View className="items-center">
           <Text className="text-[#FFFFFF] text-lg font-bold text-center mt-10">
-            ❤ 20 dias | ✔️ 80 checks{" "}
+            ❤ {robotDayLife} {robotDayLife === "01" ? "dia" : "dias"} | ✔️ 80
+            checks
           </Text>
           <LifeStatus />
           <StatusBar />
