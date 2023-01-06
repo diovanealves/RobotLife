@@ -18,7 +18,7 @@ export default function Notification({
   };
   return (
     <>
-      <View className="flex items-center mb-5">
+      <View className="flex flex-row items-center mb-5">
         <Text className="text-[#FFFFFF] text-xl mr-3">Notificação</Text>
         <Switch
           trackColor={{ false: "#FF0044", true: "#2DBE56" }}
