@@ -45,7 +45,7 @@ export default function Explanation() {
           </Text>
           <DefaultButton
             buttonText={"Continuar"}
-            handlePress={handleNavHome}
+            handlePress={handleSetShowHome}
             width={250}
             height={50}
           />
