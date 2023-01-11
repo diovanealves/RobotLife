@@ -8,6 +8,7 @@ import {
 } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import HabitService from "../../../Services/HabitService";
+import NotificationService from "../../../Services/NotificationService";
 
 export default function UpdateExcludeButtons({
   habitInput,
