@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 import Lottie from "lottie-react-native";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import AnimationService from "../../../Services/AnimationService";
 
@@ -38,13 +38,13 @@ export default function LifeStatus({
         source={money}
         autoPlay
         loop
-        style={styles.educationAnimation}
+        style={styles.moneyAnimation}
       ></Lottie>
       <Lottie
         source={robot}
         autoPlay
         loop
-        style={styles.educationAnimation}
+        style={styles.robotAnimation}
       ></Lottie>
     </View>
   );
