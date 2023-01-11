@@ -17,6 +17,8 @@ import Notification from "../../Components/HabitPage/Notification";
 import TimeDatePicker from "../../Components/HabitPage/TimeDataPicker";
 import UpdateExcludeButtons from "../../Components/HabitPage/UpdateExcludeButtons";
 import DefaultButton from "../../Components/Common/DefaultButton";
+
+import NotificationService from "../../Services/NotificationService";
 import HabitService from "../../Services/HabitService";
 
 Notifications.setNotificationHandler({
@@ -67,6 +69,14 @@ export default function HabitPage({ route }) {
         "Você precisa dizer a frequência e o horário da notificação."
       );
     } else {
+      if (notificationToggle) {
+        NotificationService.createNotification(
+          habitInput,
+          frequencyInput,
+          dayNotification,
+          timeNotification
+        );
+      }
       HabitService.createHabit({
         habitArea: habit?.habitArea,
         habitName: habitInput,
@@ -145,8 +155,8 @@ export default function HabitPage({ route }) {
       Notifications.removeNotificationSubscription(responseListener.current);
     };
   }, []);
-  
-  return ( 
+
+  return (
     <View className="h-screen bg-[#212121]">
       <ScrollView>
         <View>

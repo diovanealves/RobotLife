@@ -60,7 +60,7 @@ export default function Home({ route }) {
         const formDate = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
         const checkDays =
           new Date(formDate) - new Date(showHome.appStartData) + 1;
-        setRobotDaysLife(checkDays.toString().padStart(2, "0"));
+        setRobotDayLife(checkDays.toString().padStart(2, "0"));
       })
       .catch((err) => console.log(err));
   }, [route.params]);
